@@ -18,6 +18,9 @@ def getVehicleCoordinates():
     return latitude+','+longitude
 
 routeInfo = getRouteInfo(sys.argv[1], sys.argv[2])
-coordinates = getVehicleCoordinates()
-
-print(coordinates)
+if routeInfo:
+    coordinates = getVehicleCoordinates()
+    print(coordinates)
+else:
+    print('No ' + sys.argv[2] + ' trains are currently running on the ' + sys.argv[1] + ' line.')
+    
