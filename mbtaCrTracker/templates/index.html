@@ -7,37 +7,28 @@
 
     <body>
         <div>
-            <form>
+            <form action="/map" method="GET">
                 <div class="DropdownCountainer">
                     <label>Commuter Rail Line:</label>
                     </br>
-                    <select id = "crLine">
-                        <option value = "Fairmount">Fairmount</option>
-                        <option value = "Fitchburg">Fitchburg</option>
-                        <option value = "Worcester">Framingham</option>
-                        <option value = "Franklin">Franklin</option>
-                        <option value = "Greenbush">Greenbush</option>
-                        <option value = "Kingston">Kingston</option>
-                        <option value = "Lakeville">Lakeville</option>
-                        <option value = "Middleborough">Middleborough</option>
-                        <option value = "Needham">Needham</option>
-                        <option value = "Providence">Providence</option>
-                        <option value = "Providence">Stoughton</option>
-                        <option value = "Worcester">Worcester</option>
+                    <select name="line">
+                        {% for line in lines %}
+                            <option value="{{ line[0] }}">{{ line[1] }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 </br>
                 <div class="DropdownContainer">
                     <label>Direction:</label>
                     </br>
-                    <select id = "direction">
+                    <select name="direction">
                         <option value = "Inbound">Inbound (To Boston)</option>
                         <option value = "Outbound">Outbound (From Boston)</option>
                     </select>
                 </div>
                 </br>
                 <div class="DropdownContainer">
-                    <button type="submit">Find A Train!</button>
+                    <input type="submit" value="Find a Train!">
                 </div>
             </form>
         </div>
