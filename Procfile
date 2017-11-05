@@ -1,1 +1,1 @@
-web: gunicorn mbtaCrTracker.py --log-file=-
+web: gunicorn mbtaCrTracker:app --log-file=-
