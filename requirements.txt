@@ -1,2 +1,4 @@
 Flask
 gunicorn
+Jinja2
+requests
