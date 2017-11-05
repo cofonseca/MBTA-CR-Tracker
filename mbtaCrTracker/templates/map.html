@@ -46,29 +46,25 @@
     </style>
   </head>
   <body>
-    <div id="floating-panel">
-      <input id="latlng" type="text" value="40.714224,-73.961452">
-      <input id="submit" type="button" value="Reverse Geocode">
-    </div>
     <div id="map"></div>
     <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
-          center: {lat: 40.731, lng: -73.997}
+          center: {lat: {{ coords[0] }}, lng: {{ coords[1] }}}
         });
         var geocoder = new google.maps.Geocoder;
         var infowindow = new google.maps.InfoWindow;
 
-        document.getElementById('submit').addEventListener('click', function() {
+        /*document.getElementById('submit').addEventListener('click', function() {
           geocodeLatLng(geocoder, map, infowindow);
-        });
+        });*/
       }
 
       function geocodeLatLng(geocoder, map, infowindow) {
-        var input = document.getElementById('latlng').value;
-        var latlngStr = input.split(',', 2);
-        var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        //var input = document.getElementById('latlng').value;
+        //var latlngStr = input.split(',', 2);
+        var latlng = {lat: parseFloat({{ coords[0] }}), lng: parseFloat({{coords[1]}})};
         geocoder.geocode({'location': latlng}, function(results, status) {
           if (status === 'OK') {
             if (results[0]) {
