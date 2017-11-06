@@ -25,4 +25,5 @@ def fourohfour(error):
     return render_template('404.html'), 404
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run()
