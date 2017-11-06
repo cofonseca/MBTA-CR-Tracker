@@ -18,5 +18,5 @@ def findTrain():
     return render_template('map.html', coords=coords)
 
 @app.errorhandler(404)
-def fourohfour():
-    return render_template('404.html')
+def fourohfour(error):
+    return render_template('404.html'), 404
