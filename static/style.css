@@ -1,0 +1,12 @@
+h2 {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+p, label {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+div {
+    margin: auto;
+    text-align: center;
+}

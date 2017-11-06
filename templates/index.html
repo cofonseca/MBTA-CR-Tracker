@@ -1,37 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>MBTA CR Tracker</title>
-    </head>
-
-    <body>
-        <div>
-            <form action="/map" method="GET">
-                <div class="DropdownCountainer">
-                    <label>Commuter Rail Line:</label>
-                    </br>
-                    <select name="line">
-                        {% for line in lines %}
-                            <option value="{{ line[0] }}">{{ line[1] }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                </br>
-                <div class="DropdownContainer">
-                    <label>Direction:</label>
-                    </br>
-                    <select name="direction">
-                        <option value = "Inbound">Inbound (To Boston)</option>
-                        <option value = "Outbound">Outbound (From Boston)</option>
-                    </select>
-                </div>
-                </br>
-                <div class="DropdownContainer">
-                    <input type="submit" value="Find a Train!">
-                </div>
-            </form>
+{% extends 'layout.html' %}
+{% block body %}
+<div>
+    <h2>Search for a Train</h2>
+    <form action="/map" method="GET">
+        <div class="DropdownCountainer">
+            <label>Commuter Rail Line:</label>
+            </br>
+            <select name="line">
+                {% for line in lines %}
+                    <option value="{{ line[0] }}">{{ line[1] }}</option>
+                {% endfor %}
+            </select>
         </div>
-    </body>
-
-</html>
+        </br>
+        <div class="DropdownContainer">
+            <label>Direction:</label>
+            </br>
+            <select name="direction">
+                <option value = "Inbound">Inbound (To Boston)</option>
+                <option value = "Outbound">Outbound (From Boston)</option>
+            </select>
+        </div>
+        </br>
+        <div class="DropdownContainer">
+            <input type="submit" value="Find a Train!">
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    lines = [['Fairmount','Fairmount'],['Fitchburg','Fitchburg'],['Worcester','Framingham'],['Franklin','Franklin'],['Greenbush','Greenbush'],['Kingston','Kingston'],['Middleborough','Lakevile'],['Middleborough','Middleborough'],['Needham','Needham'],['Providence','Providence'],['Providence','Stoughton'],['Worcester','Worcester']]
+    lines = [['Fairmount','Fairmount'],['Fitchburg','Fitchburg'],['Worcester','Framingham'],['Franklin','Franklin'],['Greenbush','Greenbush'],['Kingston','Kingston'],['Middleborough','Lakeville'],['Middleborough','Middleborough'],['Needham','Needham'],['Providence','Providence'],['Providence','Stoughton'],['Worcester','Worcester']]
     return render_template('index.html', lines=lines)
 
 @app.route('/map', methods=['GET'])
@@ -21,9 +21,10 @@ def findTrain():
     return render_template('map.html', coords=coords)
 
 @app.errorhandler(404)
-def fourohfour(error):
+def fourOhFour(error):
     return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
+    
