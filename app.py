@@ -25,4 +25,4 @@ def fourohfour(error):
     return render_template('404.html'), 404
 
 
-app.run(host='0.0.0.0', debug=True)
+app.run(debug=True)
