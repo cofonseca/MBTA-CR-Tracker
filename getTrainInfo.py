@@ -4,9 +4,6 @@ import sys
 def getTrainInfo(line, direction):
 
     def getRouteInfo(line, direction):
-        # Gather Info and Make API Call
-        #route = getRoute()
-        #direction = getDirection()
         url = 'http://realtime.mbta.com/developer/api/v2/vehiclesbyroute?api_key=wX9NwuHnZU2ToO7GmGR9uw&route=CR-'+line+'&format=json'
         response = (requests.get(url)).json()
         # Return JSON Object
