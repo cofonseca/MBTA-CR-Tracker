@@ -1,7 +1,6 @@
 from flask import render_template, request, redirect
 from mbtaCrTracker import app
 from getTrainInfo import getTrainInfo
-#import sys
 
 @app.route('/')
 @app.route('/index')
@@ -13,7 +12,7 @@ def index():
 def findTrain():
     line = request.args.get('line')
     direction = request.args.get('direction')
-    coords = getTrainInfo(line,direction)
+    coords = getTrainInfo(line, direction)
     app.logger.debug('Line: ' + line)
     app.logger.debug('Direction: ' + direction)
     return render_template('map.html', coords=coords)
