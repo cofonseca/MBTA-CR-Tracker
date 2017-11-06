@@ -1,4 +1,3 @@
 from mbtaCrTracker import app
 from mbtaCrTracker import views
-app.debug = True
-app.run()
+app.run(host='0.0.0.0', port=80, debug=True)
