@@ -1,6 +1,9 @@
-from flask import render_template, request, redirect
-from mbtaCrTracker import app
+from flask import Flask, render_template, request, url_for, redirect
 from getTrainInfo import getTrainInfo
+
+app = Flask(__name__)
+
+# VIEWS
 
 @app.route('/')
 @app.route('/index')
@@ -20,3 +23,6 @@ def findTrain():
 @app.errorhandler(404)
 def fourohfour(error):
     return render_template('404.html'), 404
+
+
+app.run(host='0.0.0.0', debug=True)
