@@ -1,15 +1,14 @@
 from flask import Flask, render_template, request, url_for, redirect
 from getTrainInfo import getTrainInfo
-
+from lines import lines
 app = Flask(__name__)
 
-# VIEWS
 
+# Views
 @app.route('/')
 @app.route('/index')
 def index():
-    lines = [['Fairmount','Fairmount'],['Fitchburg','Fitchburg'],['Worcester','Framingham'],['Franklin','Franklin'],['Greenbush','Greenbush'],['Kingston','Kingston'],['Middleborough','Lakeville'],['Middleborough','Middleborough'],['Needham','Needham'],['Providence','Providence'],['Providence','Stoughton'],['Worcester','Worcester']]
-    return render_template('index.html', lines=lines)
+    return render_template('index.html', lines=lines())
 
 @app.route('/map', methods=['GET'])
 def findTrain():
@@ -25,6 +24,7 @@ def fourOhFour(error):
     return render_template('404.html'), 404
 
 
+# Start The App
 if __name__ == '__main__':
     app.run(debug=True)
     
