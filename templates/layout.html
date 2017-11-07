@@ -4,9 +4,27 @@
         <meta charset="utf-8">
         <title>MBTA CR Tracker</title>
         <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Nunito+Sans" rel="stylesheet">        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <link href="../static/style.css" rel="stylesheet">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="../static/main.js"></script>
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="container">
+            <header class="header clearfix">
+                <nav>
+                    <ul class="nav nav-pills float-right">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Search <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Browse</a>
+                    </li>
+                    </ul>
+                </nav>
+                <h2>MBTA Tracker</h2>
+            </header>
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>

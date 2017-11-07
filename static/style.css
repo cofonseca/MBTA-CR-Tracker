@@ -1,4 +1,9 @@
-h2 {
+.header {
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+h2, h3 {
     font-family: 'Archivo Black', sans-serif;
 }
 
