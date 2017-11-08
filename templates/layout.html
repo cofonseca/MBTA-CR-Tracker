@@ -4,26 +4,23 @@
         <meta charset="utf-8">
         <title>MBTA CR Tracker</title>
         <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Nunito+Sans" rel="stylesheet">        
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css" rel="stylesheet">
         <link href="../static/style.css" rel="stylesheet">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="../static/main.js"></script>
     </head>
     <body>
         <div class="container">
-            <header class="header clearfix">
-                <nav>
-                    <ul class="nav nav-pills float-right">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Search <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Browse</a>
-                    </li>
-                    </ul>
-                </nav>
-                <h2>MBTA Tracker</h2>
-            </header>
+            <div class="ui stackable menu">
+                <div class="item">
+                    <img id="t" src="../static/images/t.png">
+                </div>
+                <div class="item">
+                    <h2 id="title">Tracker</h2>
+                </div>
+                <a class="active item">Home</a>
+                <a class="item">Browse</a>
+                <a class="item">Map</a>
+                </div>
             {% block body %}{% endblock %}
         </div>
     </body>

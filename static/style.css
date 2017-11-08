@@ -1,17 +1,22 @@
-.header {
-    padding-bottom: 5px;
-    border-bottom: 1px solid black;
+#id {
+    font-family: 'Archivo Black', sans-serif';
 }
 
-h2, h3 {
+body {
+    background-color: #e2e2e2;
+}
+
+#t {
+    width: 30px;
+    height: 30px;
+}
+
+#title {
     font-family: 'Archivo Black', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 p, label {
     font-family: 'Nunito Sans', sans-serif;
-}
-
-div {
-    margin: auto;
-    text-align: center;
 }
