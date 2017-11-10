@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta charset="utf-8">
-        <title>MBTA CR Tracker</title>
-        <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Nunito+Sans" rel="stylesheet">        
-        <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css" rel="stylesheet">
+        <title>Commuter Rail Tracker</title>
+        <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Lato" rel="stylesheet">        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet">
         <link href="../static/style.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
         <script src="../static/main.js"></script>
     </head>
     <body>
-        <div class="container">
-            <div class="ui stackable menu">
-                <div class="item">
-                    <img id="t" src="../static/images/t.png">
-                </div>
-                <div class="item">
-                    <h2 id="title">Tracker</h2>
-                </div>
-                <a class="active item">Home</a>
-                <a class="item">Browse</a>
-                <a class="item">Map</a>
-                </div>
-            {% block body %}{% endblock %}
-        </div>
+    {% block body %}{% endblock %}
     </body>
 </html>
