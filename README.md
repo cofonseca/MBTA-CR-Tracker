@@ -9,13 +9,9 @@ Here are my upcoming plans to improve this app:
 - I'd like to show each train's progress on the map as it moves along its route.
 - Need to clean up the Maps page. The code is a mess.
 - Better error handling!
-- CSS and Javascript should be separated from the HTML
-- Use Jinja2 templating where applicable.
-- Styling! Make it look nice. 
+- A pin should be dropped on the map at the train's location, rather than just centering the map on the train's coordinates.
 
 # Addional Notes
-The API keys in my code are demo keys. I'm not that dumb. =D
-
-I am not interested in any contributions at this time, as this is strictly a personal project.
+I am not interested in any contributions at this time. This is strictly a personal project.
 
 A live demo of this site can be found on Heroku: https://mbtacrtracker.herokuapp.com
