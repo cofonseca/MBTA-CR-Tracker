@@ -1,48 +1,39 @@
 {% extends 'layout.html' %}
 {% block body %}
 <div class="ui middle aligned center aligned grid container">
-  <div class="column">
-      <form class="ui large form" action="/map" method="GET">
-          <div class="ui stacked segment">
-              <h3 class="ui block header">Find a Train</h3>
+  	<div class="column">
+      	<form class="ui large form" action="/map" method="GET">
+          	<div class="ui stacked segment">
+              	<h3 class="ui block header">Find a Train</h3>
   
-              <!-- First Field -->
-              <div class="field">
-                  <select class="ui dropdown">
-                      <option value="" disabled selected>Commuter Rail Line</option>
-                      <option value="Providence">Providence</option>
-                      <option value="fdsfdsfds">Stoughton</option>
-                      <option value="fdsfdsfds">Middleborough</option>
-                      <option value="fdsfdsfds">Worcester</option>
-                      <option value="fdsfdsfds">fdsfdsfdsfds</option>
-                      <option value="fdsfdsfds">fdsfdsfdsfds</option>
-                      <option value="fdsfdsfds">fdsfdsfdsfds</option>
-                      <option value="fdsfdsfds">fdsfdsfdsfds</option>
-                      <option value="fdsfdsfds">fdsfdsfdsfds</option>
-                      <option value="fdsfdsfds">fdsfdsfdsfds</option>
-                  </select>
-              </div>
+              	<!-- First Field -->
+              	<div class="field">
+                  	<select name="line" class="ui dropdown">
+                	{% for line in lines %}
+                        <option value="{{ line[0] }}">{{ line[1] }}</option>
+					{% endfor %}
+                  	</select>
+              	</div>
 
-              <!-- Second Field -->
-              <div class="field">
-                  <select class="ui dropdown">
-                      <option value="" disabled selected>Travel Direction</option>
-                      <option value="Inbound">Inbound (To Boston)</option>
-                      <option value="Outbound">Outbound (From Boston)</option>
-                  </select>
-              </div>
+              	<!-- Second Field -->
+              	<div class="field">
+                	<select name="direction" class="ui dropdown">
+						<option value="Inbound">Inbound (To Boston)</option>
+                      	<option value="Outbound">Outbound (From Boston)</option>
+                  	</select>
+              	</div>
 
-              <!-- Submit Button -->
-              <button class="ui fluid submit button" type="submit">Search</button>
+              	<!-- Submit Button -->
+              	<button class="ui fluid submit button" type="submit">Search</button>
   
-          </div>
-      </form>
+			</div>
+		</form>
 
-      <!--Browse Message-->
-      <div class="ui message">
-          Not sure what to look for? <a href="/browse">Browse All Trains</a>
-      </div>
+      	<!--Browse Message-->
+      	<div class="ui message">
+			Not sure what to look for? <a href="/browse">Browse All Trains</a>
+      	</div>
 
-  </div>
+  	</div>
 </div>
 {% endblock %}
