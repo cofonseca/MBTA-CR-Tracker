@@ -4,8 +4,9 @@ import sys
 def getTrainInfo(line, direction):
 
     def getRouteInfo(line, direction):
-        url = 'http://realtime.mbta.com/developer/api/v2/vehiclesbyroute?api_key=wX9NwuHnZU2ToO7GmGR9uw&route=CR-'+line+'&format=json'
+        url = 'http://realtime.mbta.com/developer/api/v2/vehiclesbyroute?api_key=DXxEHBSTPEKF4sFlsamMaw&route=CR-'+line+'&format=json'
         response = (requests.get(url)).json()
+        print(response)
         # Return JSON Object
         for trip in response['direction']:
             if trip['direction_name'] == direction:

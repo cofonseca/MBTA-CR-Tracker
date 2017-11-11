@@ -3,12 +3,11 @@ from getTrainInfo import getTrainInfo
 from lines import lines
 app = Flask(__name__)
 
-
 # Views
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', lines=lines())
+    return render_template('search.html', lines=lines())
 
 @app.route('/map', methods=['GET'])
 def findTrain():
@@ -23,8 +22,6 @@ def findTrain():
 def fourOhFour(error):
     return render_template('404.html'), 404
 
-
 # Start The App
 if __name__ == '__main__':
     app.run(debug=True)
-    
