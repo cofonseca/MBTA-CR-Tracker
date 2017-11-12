@@ -2,6 +2,18 @@
 {% block body %}
 <div class="ui middle aligned center aligned grid container">
   	<div class="column">
+
+		<!-- Title Thingy -->
+		<div class="ui stackable menu">
+			<div class="item">
+				<img id="t" src="../static/images/t.png">
+			</div>
+			<div class="item">
+				<h2 id="title">Tracker</h2>
+			</div>
+		</div>
+
+		<!-- Begin Form -->
       	<form class="ui large form" action="/map" method="GET">
           	<div class="ui stacked segment">
               	<h3 class="ui block header">Find a Train</h3>
@@ -24,7 +36,7 @@
               	</div>
 
               	<!-- Submit Button -->
-              	<button class="ui fluid submit button" type="submit">Search</button>
+              	<button class="ui fluid primary submit button" type="submit">Search</button>
   
 			</div>
 		</form>
