@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect
 from getTrainInfo import getTrainInfo
+from trainInfo import *
 from lines import lines
 app = Flask(__name__)
 
@@ -9,16 +10,24 @@ app = Flask(__name__)
 def index():
     return render_template('search.html', lines=lines())
 
-@app.route('/map', methods=['GET'])
+@app.route('/trains/find', methods=['GET'])
 def findTrain():
     line = request.args.get('line')
     direction = request.args.get('direction')
-    coords = getTrainInfo(line, direction)
     app.logger.debug('Line: ' + line)
     app.logger.debug('Direction: ' + direction)
-    if coords:
-        app.logger.debug('Coordinates returned.')
-    return render_template('map.html', coords=coords)
+    trains = getAllTrainsMatchingCriteria(line, direction)
+
+    if len(trains) == 0:
+        app.logger.debug('No trains found matching criteria.')
+        return render_template('search.html')
+    elif len(trains) == 1:
+        app.logger.debug('1 train matches the crieria.')
+        coords = getTrainCoordinates(trains[0])
+        return render_template('map.html', coords=coords)
+    else:
+        app.logger.debug('Multiple trains match the criteria.')
+    return render_template('search.html')
 
 @app.errorhandler(404)
 def fourOhFour(error):
