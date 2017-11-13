@@ -16,6 +16,8 @@ def findTrain():
     coords = getTrainInfo(line, direction)
     app.logger.debug('Line: ' + line)
     app.logger.debug('Direction: ' + direction)
+    if coords:
+        app.logger.debug('Coordinates returned.')
     return render_template('map.html', coords=coords)
 
 @app.errorhandler(404)
