@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, url_for, redirect
-from getTrainInfo import getTrainInfo
 from trainInfo import *
 from lines import lines
 app = Flask(__name__)
@@ -27,7 +26,7 @@ def findTrain():
         return render_template('map.html', coords=coords)
     else:
         app.logger.debug('Multiple trains match the criteria.')
-    return render_template('search.html')
+    return render_template('results.html')
 
 @app.errorhandler(404)
 def fourOhFour(error):
