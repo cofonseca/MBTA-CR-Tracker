@@ -13,20 +13,30 @@ def index():
 def findTrain():
     line = request.args.get('line')
     direction = request.args.get('direction')
-    app.logger.debug('Line: ' + line)
-    app.logger.debug('Direction: ' + direction)
-    trains = getAllTrainsMatchingCriteria(line, direction)
+    trainId = request.args.get('trainId')
+    if line:
+        app.logger.debug('Line: ' + line)
+    if direction:
+        app.logger.debug('Direction: ' + direction)
 
-    if len(trains) == 0:
+    if trainId:
+        app.logger.debug('Trip ID: ' + trainId)
+        trains = getAllTrainsMatchingCriteria(line, direction, trainId)
+    else:
+        trains = getAllTrainsMatchingCriteria(line, direction, 0)
+        
+    trainCount = len(trains)
+
+    if trainCount == 0:
         app.logger.debug('No trains found matching criteria.')
         return render_template('search.html')
-    elif len(trains) == 1:
+    elif trainCount == 1:
         app.logger.debug('1 train matches the crieria.')
         coords = getTrainCoordinates(trains[0])
         return render_template('map.html', coords=coords)
     else:
         app.logger.debug('Multiple trains match the criteria.')
-    return render_template('results.html')
+        return render_template('results.html', trainCount=trainCount, trains=trains, line=line, direction=direction)
 
 @app.errorhandler(404)
 def fourOhFour(error):

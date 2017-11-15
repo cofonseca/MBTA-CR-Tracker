@@ -2,7 +2,7 @@ import requests
 import sys
 
 
-def getAllTrainsMatchingCriteria(line, direction):
+def getAllTrainsMatchingCriteria(line, direction, trainId):
     # Returns a list of all trains that meet the user's search criteria.
     print('Search Criteria: ' + line + ' ' + direction)
     
@@ -21,8 +21,16 @@ def getAllTrainsMatchingCriteria(line, direction):
                 trains.append(train)
                 print('\nFound Train:')
                 print(train)
-            print('Found ' + str(len(trains)) + ' train(s) matching the search criteria.')
-            return trains
+            if trainId != 0:
+                for train in trains:
+                    Id = train['trip_id'].split('-')[-1]
+                    print('ID: ' + str(Id))
+                    if Id == trainId:
+                        print(train)
+                        return train
+            else:
+                print('Found ' + str(len(trains)) + ' train(s) matching the search criteria.')
+                return trains
 
 def getTrainCoordinates(train):
     # Takes a train object from getAllTrainsMatchingCriteria(), and returns its coordinates
