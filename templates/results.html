@@ -13,15 +13,13 @@
             </div>
         </div>
 
-        <form class="ui large form" action="/trains/find" method="GET">
+        <form class="ui large form" action="/trains" method="GET">
             <div class="ui stacked segment">
                 <h3 class="ui block header">{{ trainCount }} trains were found.</h3>
 
                 {% for train in trains %}
                     <div class="field">
                         <div class="ui large radio checkbox">
-                            <input type="hidden" name="line" value="{{ line }}">
-                            <input type="hidden" name="direction" value="{{ direction }}">
                             <input type="radio" name="trainId" value="{{ train['trip_id'].split('-')[-1] }}">
                             <label>{{ train['trip_name'] }}</label>
                         </div>
