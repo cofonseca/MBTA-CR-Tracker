@@ -10,7 +10,7 @@ def getAllTrainsMatchingCriteria(line, direction, trainId):
     url = 'http://realtime.mbta.com/developer/api/v2/vehiclesbyroute?api_key=DXxEHBSTPEKF4sFlsamMaw&route=CR-'+line+'&format=json'
     try:
         response = (requests.get(url)).json()
-    except:
+    except ConnectionError:
         print('Unable to connect to API endpoint at realtime.mbta.com')
     
     # Parse Data
@@ -21,16 +21,18 @@ def getAllTrainsMatchingCriteria(line, direction, trainId):
                 trains.append(train)
                 print('\nFound Train:')
                 print(train)
-            if trainId != 0:
+            print('Found ' + str(len(trains)) + ' train(s) matching the search criteria.')
+
+            if trainId != '000':
+                print ('Searching for ID: ' + trainId)
                 for train in trains:
-                    Id = train['trip_id'].split('-')[-1]
-                    print('ID: ' + str(Id))
-                    if Id == trainId:
+                    tripId = train['trip_id'].split('-')[-1]
+                    if trainId == tripId:
                         print(train)
                         return train
             else:
-                print('Found ' + str(len(trains)) + ' train(s) matching the search criteria.')
                 return trains
+
 
 def getTrainCoordinates(train):
     # Takes a train object from getAllTrainsMatchingCriteria(), and returns its coordinates
