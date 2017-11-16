@@ -3,28 +3,37 @@ from trainInfo import *
 from lines import lines
 app = Flask(__name__)
 
-# Views
+
+# Routes
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('search.html', lines=lines())
 
+
+@app.route('/trains', methods=['GET'])
+def findTrainById():
+    trainId = request.args.get('trainId')
+    line = request.referrer.split('line=')[1].split('&')[0]
+    app.logger.debug('Line: ' + line)
+    direction = request.referrer.split('direction=')[1]
+    app.logger.debug('Direction: ' + direction)
+    app.logger.debug('Train ID: ' + trainId)
+    url = request.url
+    app.logger.debug('URL: ' + url)
+    #train = getTrainMatchingId(trainId)
+    return render_template('search.html')
+
+
 @app.route('/trains/find', methods=['GET'])
 def findTrain():
     line = request.args.get('line')
-    direction = request.args.get('direction')
-    trainId = request.args.get('trainId')
-    if line:
-        app.logger.debug('Line: ' + line)
-    if direction:
-        app.logger.debug('Direction: ' + direction)
+    app.logger.debug('Line: ' + line)
 
-    if trainId:
-        app.logger.debug('Trip ID: ' + trainId)
-        trains = getAllTrainsMatchingCriteria(line, direction, trainId)
-    else:
-        trains = getAllTrainsMatchingCriteria(line, direction, 0)
-        
+    direction = request.args.get('direction')
+    app.logger.debug('Direction: ' + direction)
+
+    trains = getAllTrainsMatchingCriteria(line, direction)
     trainCount = len(trains)
 
     if trainCount == 0:
@@ -36,11 +45,13 @@ def findTrain():
         return render_template('map.html', coords=coords)
     else:
         app.logger.debug('Multiple trains match the criteria.')
-        return render_template('results.html', trainCount=trainCount, trains=trains, line=line, direction=direction)
+        return render_template('results.html', trainCount=trainCount, trains=trains)
+
 
 @app.errorhandler(404)
 def fourOhFour(error):
     return render_template('404.html'), 404
+
 
 # Start The App
 if __name__ == '__main__':
