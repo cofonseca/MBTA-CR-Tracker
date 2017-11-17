@@ -14,16 +14,17 @@ def index():
 @app.route('/trains', methods=['GET'])
 def findTrainById():
     trainId = request.args.get('trainId')
+    app.logger.debug('Train ID: ' + trainId)
+
     line = request.referrer.split('line=')[1].split('&')[0]
     app.logger.debug('Line: ' + line)
+
     direction = request.referrer.split('direction=')[1]
     app.logger.debug('Direction: ' + direction)
-    app.logger.debug('Train ID: ' + trainId)
-    url = request.url
-    app.logger.debug('URL: ' + url)
 
     train = getAllTrainsMatchingCriteria(line, direction, trainId)
     coords = getTrainCoordinates(train)
+    
     return render_template('map.html', coords=coords)
 
 
@@ -41,13 +42,21 @@ def findTrain():
         app.logger.debug('No trains found matching criteria.')
         return render_template('search.html')
         # flash that there aren't any trains running.
+
     elif len(trains) == 1:
         app.logger.debug('1 train matches the crieria.')
         coords = getTrainCoordinates(trains[0])
         return render_template('map.html', coords=coords)
+
     else:
         app.logger.debug('Multiple trains match the criteria.')
         return render_template('results.html', trainCount=len(trains), trains=trains)
+
+
+@app.route('/trains/browse', methods=['GET'])
+def findAllTrains():
+    trains = getAllTrains()
+    return render_template('search.html')
 
 
 @app.errorhandler(404)
