@@ -1,8 +1,14 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div>
-    <h2>FourOhFour!</h2>
-    <p>It looks like the page that you requested doesn't exist.<p>
-    <p>Double-check the URL and try again!</p>
+<div class="ui middle aligned center aligned grid container">
+    <div class="column">
+        <div class="ui block header">
+            <h2>FourOhFour!</h2>
+        </div>
+        <div class="ui text container">
+            <p>It looks like the page that you requested doesn't exist.<p>
+            <p>Double-check the URL and try again!</p>
+        </div>
+    </div>
 </div>
 {% endblock %}
