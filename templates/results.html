@@ -1,18 +1,5 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div class="ui middle aligned center aligned grid container">
-  	<div class="column">
-
-        <!-- Title Thingy -->
-		<div class="ui menu">
-            <div class="item">
-                <img id="t" src="../static/images/t.png">
-            </div>
-            <div class="item">
-                <h2 id="title">Tracker</h2>
-            </div>
-        </div>
-
         <form class="ui large form" action="/trains" method="GET">
             <div class="ui stacked segment">
                 <h3 class="ui block header">{{ trainCount }} trains were found.</h3>
@@ -31,7 +18,4 @@
                 </div>
             </div>
         </form>
-
-  	</div>
-</div>
 {% endblock %}

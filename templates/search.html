@@ -1,18 +1,5 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div class="ui middle aligned center aligned grid container">
-  	<div class="column">
-
-		<!-- Title Thingy -->
-		<div class="ui menu">
-			<div class="item">
-				<img id="t" src="../static/images/t.png">
-			</div>
-			<div class="item">
-				<h2 id="title">Tracker</h2>
-			</div>
-		</div>
-
 		<!-- Begin Form -->
       	<form class="ui large form" action="/trains/find" method="GET">
           	<div class="ui stacked segment">
@@ -45,7 +32,4 @@
       	<div class="ui message">
 			Not sure what to look for? <a href="/trains/browse">Browse All Trains</a>
       	</div>
-
-  	</div>
-</div>
 {% endblock %}
