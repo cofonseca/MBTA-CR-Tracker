@@ -1,21 +1,21 @@
 {% extends 'layout.html' %}
 {% block body %}
-        <form class="ui large form" action="/trains" method="GET">
-            <div class="ui stacked segment">
-                <h3 class="ui block header">{{ trainCount }} trains were found.</h3>
+<form class="ui large form" action="/trains" method="GET">
+    <div class="ui stacked segment">
+        <h3 class="ui block header">{{ trainCount }} trains were found.</h3>
 
-                {% for train in trains %}
-                    <div class="field">
-                        <div class="ui large radio checkbox">
-                            <input type="radio" name="trainId" value="{{ train['trip_id'].split('-')[-1] }}">
-                            <label>{{ train['trip_name'] }}</label>
-                        </div>
-                    </div>
-                {% endfor %}
-                <div class="equal width fields">
-                    <a href="/index"><button class="ui fluid button" type="button">Back</button></a>
-                    <button class="ui primary submit fluid button" type="submit">Search</button>
+        {% for train in trains %}
+            <div class="field">
+                <div class="ui large radio checkbox">
+                    <input type="radio" name="trainId" value="{{ train['trip_id'].split('-')[-1] }}">
+                    <label>{{ train['trip_name'] }}</label>
                 </div>
             </div>
-        </form>
+        {% endfor %}
+        <div class="equal width fields">
+            <a href="/index"><button class="ui fluid button" type="button">Back</button></a>
+            <button class="ui primary submit fluid button" type="submit">Search</button>
+        </div>
+    </div>
+</form>
 {% endblock %}

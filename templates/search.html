@@ -1,35 +1,35 @@
 {% extends 'layout.html' %}
 {% block body %}
-		<!-- Begin Form -->
-      	<form class="ui large form" action="/trains/find" method="GET">
-          	<div class="ui stacked segment">
-              	<h3 class="ui block header">Find a Train</h3>
-  
-              	<!-- First Field -->
-              	<div class="field">
-                  	<select name="line" class="ui dropdown">
-                	{% for line in lines %}
-                        <option value="{{ line[0] }}">{{ line[1] }}</option>
-					{% endfor %}
-                  	</select>
-              	</div>
+<!-- Begin Form -->
+<form class="ui large form" action="/trains/find" method="GET">
+	<div class="ui stacked segment">
+		<h3 class="ui block header">Find a Train</h3>
 
-              	<!-- Second Field -->
-              	<div class="field">
-                	<select name="direction" class="ui dropdown">
-						<option value="Inbound">Inbound (To Boston)</option>
-                      	<option value="Outbound">Outbound (From Boston)</option>
-                  	</select>
-              	</div>
+		<!-- First Field -->
+		<div class="field">
+			<select name="line" class="ui dropdown">
+			{% for line in lines %}
+				<option value="{{ line[0] }}">{{ line[1] }}</option>
+			{% endfor %}
+			</select>
+		</div>
 
-              	<!-- Submit Button -->
-              	<button class="ui fluid primary submit button" type="submit">Search</button>
-  
-			</div>
-		</form>
+		<!-- Second Field -->
+		<div class="field">
+			<select name="direction" class="ui dropdown">
+				<option value="Inbound">Inbound (To Boston)</option>
+				<option value="Outbound">Outbound (From Boston)</option>
+			</select>
+		</div>
 
-      	<!--Browse Message-->
-      	<div class="ui message">
-			Not sure what to look for? <a href="/trains/browse">Browse All Trains</a>
-      	</div>
+		<!-- Submit Button -->
+		<button class="ui fluid primary submit button" type="submit">Search</button>
+
+	</div>
+</form>
+
+<!--Browse Message-->
+<div class="ui message">
+	Not sure what to look for? <a href="/trains/browse">Browse All Trains</a>
+</div>
 {% endblock %}
