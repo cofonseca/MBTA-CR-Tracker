@@ -53,11 +53,14 @@ def getAllTrains():
         except ConnectionError:
             print('Unable to connect to API endpoint at realtime.mbta.com')
 
-        for direction in response['direction']:
-            for train in direction['trip']:
-                trains.append(train)
-                print('\nFound Train:')
-                print(train)
+        if 'error' in response:
+            print('No trains on line: ' + line[0])
+        else:
+            for direction in response['direction']:
+                for train in direction['trip']:
+                    trains.append(train)
+                    print('\nFound Train:')
+                    print(train)
 
     print('Found ' + str(len(trains)) + ' train(s) matching the search criteria.')
     return trains
