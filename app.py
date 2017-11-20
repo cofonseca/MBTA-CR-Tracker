@@ -56,7 +56,8 @@ def findTrain():
 @app.route('/trains/browse', methods=['GET'])
 def findAllTrains():
     trains = getAllTrains()
-    return render_template('search.html')
+    app.logger.debug('Searching for All Trains.')
+    return render_template('results.html', trainCount=len(trains), trains=trains)
 
 
 @app.errorhandler(404)
