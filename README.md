@@ -5,11 +5,9 @@ The app was built using Python3 and Flask, as well as the MBTA and Google Maps A
 
 # What's Next?
 Here are my upcoming plans to improve this app:
-- Need a way to handle multiple trains traveling on the same line in the same direction at the same time.
-- I'd like to show each train's progress on the map as it moves along its route.
-- Need to clean up the Maps page. The code is a mess.
-- Better error handling!
-- A pin should be dropped on the map at the train's location, rather than just centering the map on the train's coordinates.
+- I'd like to show each train's progress on the map as it moves along its route, including a line from the source station to the destination station.
+- If a user selects a sub-line, such as Stoughton (Which is actually part of the Providence line according to the API), it still shows Providence trains.
+- When browsing all trains, they all show up in one massive list. This should be better organized.
 
 # Addional Notes
 I am not interested in any contributions at this time. This is strictly a personal project.
